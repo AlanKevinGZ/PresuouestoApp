@@ -1,0 +1,86 @@
+<div class="cabecero">
+  <div class="presupuesto">
+      <div class="presupuesto_titulo">
+          Presupuesto Disponible:
+      </div>
+      
+      <div class="presupuesto_valor">$ {{sumaProductos}} </div>
+      
+      <div class="presupuesto_ingreso limpiarEstilos" >
+          <div class="presupuesto_ingreso--texto">Ingresos</div>
+          <div class="right">
+              <div class="presupuesto_ingreso--valor">+ {{ingresos}} </div>
+              <div class="presupuesto_ingreso--porcentaje">&nbsp;</div>
+          </div>
+      </div>
+      
+      <div class="presupuesto_egreso limpiarEstilos">
+          <div class="presupuesto_egreso--text">Egresos</div>
+          <div class="right limpiarEstilos">
+              <div class="presupuesto_egreso--valor">- {{egresos}}  </div>
+              
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+  <div class="agregar">
+      <div class="agregar_contenedor">
+          <select class="agregar_tipo"  [(ngModel)]="opcionSeleccionado">
+              <option value="suma" selected>+</option>
+              <option value="resta">-</option>
+          </select>
+          <input type="text" class="agregar_descripcion" placeholder="Agregar Descripción" [(ngModel)]="descripcionProducto">
+          <input type="number" class="agregar_valor" placeholder="Valor"  [(ngModel)]="valorProducto" min="1">
+          <button class="agregar_btn" (click)="obtenerValor()">Agregar</button>
+      </div>
+  </div>
+
+
+  
+  <div class="contenedor limpiarEstilos">
+      <div class="ingreso">
+          <h2 class="ingreso_titulo">Ingresos</h2>
+             
+              
+              <div class="elemento limpiarEstilos" *ngFor="let item of arrProductos; let i=index">
+                  <div class="elemento_descripcion">{{item.descripcion}} </div>
+                  <div class="right limpiarEstilos">
+                      <div class="elemento_valor">+ {{item.valor}} </div>
+                      <div class="elemento_eliminar">
+                          <button class="elemento_eliminar--btn" (click)="eliminarProductos(i)" >
+                              <i class="ion-ios-close-outline">delte</i>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+              
+             
+              
+      </div>
+      
+      
+      
+      <div class="egreso">
+          <h2 class="egreso_titulo">Egresos</h2>
+             
+              
+              <div class="elemento limpiarEstilos" *ngFor="let item of arrProductos2; let i=index">
+                  <div class="elemento_descripcion">{{item.descripcion}}</div>
+                  <div class="right limpiarEstilos">
+                      <div class="elemento_valor">- {{item.valor}}</div>
+                     
+                      <div class="elemento_eliminar">
+                          <button class="elemento_eliminar--btn" (click)="eliminarProductosE(i)">delte<i class="ion-ios-close-outline"></i></button>
+                      </div>
+                  </div>
+              </div>
+
+              
+              
+              
+      </div>
+  </div>
